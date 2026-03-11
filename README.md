@@ -56,13 +56,13 @@ chmod +x linux.sh
 2. 复制并粘贴下面命令：
 
     ```powershell
-    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ISHAOHAO/pyboct/main/windows.ps1'))
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Text.Encoding]::UTF8.GetString((New-Object System.Net.WebClient).DownloadData('https://raw.githubusercontent.com/ISHAOHAO/pyboct/main/windows.ps1')) | iex
     ```
 
     如果上述方法被屏蔽（由网络服务提供商/DNS 阻止），请尝试以下镜像方法：
 
     ```bash
-    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://gitee.com/is-haohao/pyboct/raw/main/windows.ps1'))
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Text.Encoding]::UTF8.GetString((New-Object System.Net.WebClient).DownloadData('https://gitee.com/is-haohao/pyboct/raw/main/windows.ps1')) | iex
     ```
 
 #### 方法二：本地运行
