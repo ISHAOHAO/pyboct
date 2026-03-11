@@ -30,6 +30,12 @@
 bash <(curl -sSL https://raw.githubusercontent.com/ISHAOHAO/pyboct/main/linux.sh)
 ```
 
+如果上述方法被屏蔽（由网络服务提供商/DNS 阻止），请尝试以下镜像方法：
+
+```bash
+bash <(curl -sSL https://gitee.com/is-haohao/pyboct/raw/main/linux.sh)
+```
+
 #### 本地运行
 
 ```bash
@@ -43,34 +49,45 @@ chmod +x linux.sh
 
 > ⚠️ 建议以管理员身份运行 PowerShell（以获得系统级配置权限）
 
-#### 一键远程运行（PowerShell）
+#### 方法一：一键远程运行（PowerShell）
 
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Text.Encoding]::UTF8.GetString((New-Object System.Net.WebClient).DownloadData('https://raw.githubusercontent.com/ISHAOHAO/pyboct/main/windows.ps1')) | iex
-```
+1. 打开`PowerShell`
 
-如果上述命令遇到编码问题，也可使用简单版本（但可能显示乱码，不影响功能）：
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ISHAOHAO/pyboct/main/windows.ps1'))
-```
+2. 复制并粘贴下面命令：
 
-#### 本地运行
+    ```powershell
+    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ISHAOHAO/pyboct/main/windows.ps1'))
+    ```
 
-```powershell
-# 以管理员身份打开 PowerShell
-Set-ExecutionPolicy Bypass -Scope Process -Force
-cd D:\path\to\pyboct
-.\windows.ps1
+    如果上述方法被屏蔽（由网络服务提供商/DNS 阻止），请尝试以下镜像方法：
+
+    ```bash
+    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://gitee.com/is-haohao/pyboct/raw/main/windows.ps1'))
+    ```
+
+#### 方法二：本地运行
+
+1.先下载下来本项目的代码内容。
+
+2.把复制下面命令，并将`cd`后面的路径换成你下载的路径
+
+  ```powershell
+  # 以管理员身份打开 PowerShell
+  Set-ExecutionPolicy Bypass -Scope Process -Force
+  cd D:\path\to\pyboct
+  .\windows.ps1
 ```
 
 ### 使用命令行直接优化（静默模式，自动确认）
 
 #### Linux/macOS
+
 ```bash
 ./linux.sh -y
 ```
 
 #### Windows
+
 ```powershell
 .\windows.ps1 -y
 ```
@@ -90,6 +107,7 @@ cd D:\path\to\pyboct
 ```bash
 ./linux.sh --rollback
 ```
+
 ```powershell
 .\windows.ps1 --rollback
 ```
@@ -115,7 +133,7 @@ cd D:\path\to\pyboct
 
 直接运行 `./linux.sh`，将显示如下菜单：
 
-```
+```txt
 ========================================
    Python 环境一键初始化脚本 (Linux)  
 ========================================
@@ -223,6 +241,7 @@ cd pyboct
 ### 报告问题
 
 如果你在使用中遇到任何问题，欢迎在 [Issues](https://github.com/ISHAOHAO/pyboct/issues) 页面提出，并提供：
+
 - 操作系统版本
 - Python 环境信息
 - 执行的命令和错误日志（位于 `/tmp/python-init-*.log` 或 `%TEMP%\python-init-*.log`）
