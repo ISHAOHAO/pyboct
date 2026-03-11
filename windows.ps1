@@ -32,7 +32,6 @@ $script:WingetAvailable = $null -ne (Get-Command winget -ErrorAction SilentlyCon
 $script:ChocoAvailable = $null -ne (Get-Command choco -ErrorAction SilentlyContinue)
 
 # -------------------- 颜色输出函数 --------------------
-$Host.UI.RawUI.ForegroundColor = $null  # 重置颜色，使用函数控制
 function Write-ColorInfo($Text) { Write-Host "INFO: $Text" -ForegroundColor Green; Log "INFO: $Text" }
 function Write-ColorWarn($Text) { Write-Host "WARN: $Text" -ForegroundColor Yellow; Log "WARN: $Text" }
 function Write-ColorError($Text) { Write-Host "ERROR: $Text" -ForegroundColor Red; Log "ERROR: $Text"; exit 1 }
